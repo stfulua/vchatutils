@@ -1,0 +1,21 @@
+name: vChatUtils
+version: 1.0.1
+main: pl.vprolabs.vchatutils.vChatUtils
+api-version: "1.21"
+author: vProLabs
+description: Advanced chat management plugin with animated F3 brand and multi-language support
+
+commands:
+  chat:
+    description: Manage chat settings
+    usage: /chat <clear|on|off|status|reload>
+    permission: vchatutils.admin
+    aliases: [czat, vchat]
+
+permissions:
+  vchatutils.admin:
+    description: Access to all chat management commands
+    default: op
+  vchatutils.bypass:
+    description: Bypass disabled chat
+    default: op

@@ -1,0 +1,50 @@
+# vChatUtils by vProLabs
+# Minecraft 1.21.x Chat Management Plugin
+
+# ============================================
+# GENERAL SETTINGS
+# ============================================
+
+# Plugin prefix (supports color codes with &)
+# Default: "&8[&cvProLabs&8] "
+prefix: "&8[&cvProLabs&8] "
+
+# Language settings
+# Available: en, pl
+# Default: en
+language: en
+
+# ============================================
+# CHAT SETTINGS
+# ============================================
+
+# Is chat enabled by default?
+chat-enabled: true
+
+# Hide join messages?
+hide-join-messages: true
+
+# Hide advancement messages?
+hide-advancements: true
+
+# ============================================
+# SERVER BRAND (F3 Menu)
+# ============================================
+
+# Support vProLabs - animated brand in F3 menu
+# Shows animated "vProLabs" text when pressing F3
+# Colors: gradient from cyan to purple to pink (vProLabs style)
+# Default: true
+support-vprolabs: true
+
+# Custom server brand (if support-vprolabs is false)
+# Leave empty to use default server name
+# Supports MiniMessage format: https://docs.advntr.dev/minimessage/format.html
+custom-brand: ""
+
+# ============================================
+# TO-DO: FUTURE FEATURES
+# ============================================
+
+# [TO-DO] LuckPerms integration
+# luckperms-integration: false

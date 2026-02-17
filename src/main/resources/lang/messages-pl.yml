@@ -1,0 +1,36 @@
+# Polski plik jezykowy dla vChatUtils by vProLabs
+
+prefix: "&8[&cvProLabs&8] "
+
+commands:
+  no-permission: "&cNie masz uprawnien do uzycia tej komendy!"
+  usage: "&cUzycie: /chat <clear|on|off|status>"
+  unknown: "&cNieznana komenda. Uzycie: /chat <clear|on|off|status>"
+  
+  clear:
+    success: "&eCzat zostal wyczyszczony przez &6%player%"
+    console: "Czat wyczyszczony przez: %player%"
+    
+  toggle:
+    enabled: "&eCzat zostal &aWLACZONY &eprzez &6%player%"
+    disabled: "&eCzat zostal &cWYLACZONY &eprzez &6%player%"
+    console-enabled: "Czat wlaczony przez: %player%"
+    console-disabled: "Czat wylaczony przez: %player%"
+    
+  status:
+    header: "&8&m==========&r &cvChatUtils &8&m=========="
+    chat: "&7Czat: %status%"
+    join-messages: "&7Wiadomosci o dolaczeniu: %status%"
+    advancements: "&7Osiagniecia: %status%"
+    footer: "&8&m==============================="
+    enabled: "&aWLACZONY"
+    disabled: "&cWYLACZONY"
+    hidden: "&aUKRYTE"
+    visible: "&cWIDOCZNE"
+    
+chat:
+  disabled: "&cCzat jest obecnie wylaczony!"
+  
+other:
+  reload-success: "&aKonfiguracja przeladowana pomyslnie!"
+  reload-fail: "&cNie udalo sie przeladowac konfiguracji!"
