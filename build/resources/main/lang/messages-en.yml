@@ -1,0 +1,36 @@
+# English Language File for vChatUtils by vProLabs
+
+prefix: "&8[&cvProLabs&8] "
+
+commands:
+  no-permission: "&cYou don't have permission to use this command!"
+  usage: "&cUsage: /chat <clear|on|off|status>"
+  unknown: "&cUnknown command. Usage: /chat <clear|on|off|status>"
+
+  clear:
+    success: "&eChat has been cleared by &6%player%"
+    console: "Chat cleared by: %player%"
+
+  toggle:
+    enabled: "&eChat has been &aENABLED &eby &6%player%"
+    disabled: "&eChat has been &cDISABLED &eby &6%player%"
+    console-enabled: "Chat enabled by: %player%"
+    console-disabled: "Chat disabled by: %player%"
+
+  status:
+    header: "&8&m==========&r &cvChatUtils &8&m=========="
+    chat: "&7Chat: %status%"
+    join-messages: "&7Join messages: %status%"
+    advancements: "&7Advancements: %status%"
+    footer: "&8&m==============================="
+    enabled: "&aENABLED"
+    disabled: "&cDISABLED"
+    hidden: "&aHIDDEN"
+    visible: "&cVISIBLE"
+
+chat:
+  disabled: "&cChat is currently disabled!"
+
+other:
+  reload-success: "&aConfig reloaded successfully!"
+  reload-fail: "&cFailed to reload config!"

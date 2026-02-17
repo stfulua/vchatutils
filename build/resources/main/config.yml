@@ -1,9 +1,5 @@
 # vChatUtils by vProLabs
 # Minecraft 1.21.x Chat Management Plugin
-<<<<<<< HEAD
-=======
-# Version: 1.0.2
->>>>>>> 356f130 (v1.0.2 - Added LuckPerms integration and alias toggles)
 
 # ============================================
 # GENERAL SETTINGS
@@ -25,34 +21,11 @@ language: en
 # Is chat enabled by default?
 chat-enabled: true
 
-<<<<<<< HEAD
 # Hide join messages?
 hide-join-messages: true
 
 # Hide advancement messages?
 hide-advancements: true
-=======
-# Hide join messages? (Default: false)
-hide-join-messages: false
-
-# Hide leave messages? (Default: false)
-hide-leave-messages: false
-
-# Hide advancement messages? (Default: false)
-hide-advancements: false
-
-# ============================================
-# COMMAND ALIASES
-# ============================================
-
-# Enable Polish command aliases (/chat wyczysc, /chat wlacz, etc.)
-# Default: true
-polish-aliases: true
-
-# Enable English command aliases (/chat clear, /chat on, etc.)
-# Default: true
-english-aliases: true
->>>>>>> 356f130 (v1.0.2 - Added LuckPerms integration and alias toggles)
 
 # ============================================
 # SERVER BRAND (F3 Menu)
@@ -70,22 +43,8 @@ support-vprolabs: true
 custom-brand: ""
 
 # ============================================
-<<<<<<< HEAD
 # TO-DO: FUTURE FEATURES
 # ============================================
 
 # [TO-DO] LuckPerms integration
 # luckperms-integration: false
-=======
-# LUCKPERMS INTEGRATION
-# ============================================
-
-# Enable LuckPerms integration for chat prefixes/suffixes and group-based bypass permissions
-# Requires LuckPerms plugin to be installed
-#
-# When enabled, you can give groups permission to chat when chat is disabled:
-# /lp group <group> permission set vchatutils.bypass true
-#
-# Default: false
-luckperms-integration: false
->>>>>>> 356f130 (v1.0.2 - Added LuckPerms integration and alias toggles)
