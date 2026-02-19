@@ -1,8 +1,0 @@
-Also, add an broadcasting system, with /broadcast {message}, and there's Chat message:
-=======ANNOUNCEMENT=======
-{message}
-============================
-(of course fully with colors bro, and like alot prettier then i made it okay bro)
-So you can make /broadcast [custom] or uh /announcement command bro, [polish alias support: /ogloszenie] okay bro. Also, you can add custom Title in config Says "Announcement" and subtitle is the message. Same with bossbar bro, so you can make like 30s time announcements or whatever, set it up in config how long the bossbar effect announcement is aight bro.
-
-Also, option. So when sent announcement, chat is disabled for 5 (configurable time) seconds, and option to disable chat and wait 1 (configurable time) second before sending announcement.
