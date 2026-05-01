@@ -2,8 +2,8 @@ plugins {
     id "java"
 }
 
-group = "pl.vprolabs"
-version = "1.0.2"
+group = "xyz.vprolabs"
+version = "1.1.0"
 
 repositories {
     mavenCentral()
@@ -26,6 +26,7 @@ dependencies {
     compileOnly "net.kyori:adventure-api:4.17.0"
     compileOnly "net.kyori:adventure-text-minimessage:4.17.0"
     compileOnly "net.luckperms:api:5.4"
+    implementation "org.json:json:20240303"
 }
 
 def targetJavaVersion = 21

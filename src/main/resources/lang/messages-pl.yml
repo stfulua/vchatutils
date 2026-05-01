@@ -1,36 +1,34 @@
-# Polskie wiadomości dla vChatUtils
+# ChatControl Language File (Polish)
+# Use MiniMessage format: https://docs.advntr.dev/minimessage/format.html
 
 commands:
-  usage: "%prefix% &cUżycie: /chat <wyczysc|wlacz|wylacz|status|przeladuj>"
-  unknown: "%prefix% &cNieznana komenda. Użyj /chat aby uzyskać pomoc."
-
+  usage: "<prefix><red>Uzycie: /chat <clear|on|off|status|reload>"
+  unknown: "<prefix><red>Nieznana komenda! Uzyj /chat aby uzyskać pomoc."
   clear:
-    success: "%prefix% &aCzat wyczyszczony przez &e%player%&a!"
-    console: "[vChatUtils] Czat wyczyszczony przez %player%"
-
+    success: "<prefix><green>Czat zostal wyczyszczony przez <yellow><player><green>."
+    console: "<prefix><green>Czat zostal wyczyszczony przez <yellow>Konsole<green>."
   toggle:
-    enabled: "%prefix% &aCzat włączony przez &e%player%&a!"
-    disabled: "%prefix% &cCzat wyłączony przez &e%player%&c!"
-    console-enabled: "[vChatUtils] Czat włączony przez %player%"
-    console-disabled: "[vChatUtils] Czat wyłączony przez %player%"
-
+    enabled: "<prefix><green>Czat zostal wlaczony przez <yellow><player><green>."
+    disabled: "<prefix><red>Czat zostal wylaczony przez <yellow><player><red>."
   status:
-    header: "&8========== &cvChatUtils &8=========="
-    chat: "&7Czat: %status%"
-    join-messages: "&7Wiadomości dołączenia: %status%"
-    leave-messages: "&7Wiadomości opuszczenia: %status%"
-    advancements: "&7Osiągnięcia: %status%"
-    luckperms: "&7LuckPerms: %status%"
-    bypass-groups: "&7Grupy bypass: &e%groups%"
-    footer: "&8=============================="
-    enabled: "&aWŁĄCZONY"
-    disabled: "&cWYŁĄCZONY"
-    visible: "&aWIDOCZNE"
-    hidden: "&cUKRYTE"
+    header: "<gray>--- <color:#ff5555>ChatControl Status</color> ---"
+    chat: "<gray>Czat: <status>"
+    join-messages: "<gray>Wiadomosci wejscia: <status>"
+    leave-messages: "<gray>Wiadomosci wyjscia: <status>"
+    advancements: "<gray>Osiagniecia: <status>"
+    luckperms: "<gray>Hook LuckPerms: <status>"
+    bypass-groups: "<gray>Grupy z bypassem: <yellow><groups>"
+    enabled: "<green>Wlaczony"
+    disabled: "<red>Wylaczony"
+    hidden: "<red>Ukryte"
+    visible: "<green>Widoczne"
+    footer: "<gray>-----------------------"
 
 chat:
-  disabled: "%prefix% &cCzat jest obecnie wyłączony!"
+  disabled: "<prefix><red>Czat jest obecnie wylaczony!"
+  cooldown: "<prefix><red>Poczekaj <yellow><seconds>s<red> przed wyslaniem kolejnej wiadomosci."
+  filtered: "<prefix><red>Twoja wiadomosc zawiera zabronione slowa!"
 
 other:
-  reload-success: "%prefix% &aKonfiguracja przeładowana pomyślnie!"
-  reload-fail: "%prefix% &cNie udało się przeładować konfiguracji!"
+  reload-success: "<prefix><green>Konfiguracja i wiadomosci zostaly przeladowane pomyslnie!"
+  reload-fail: "<prefix><red>Blad podczas przeladowywania konfiguracji! Sprawdz konsole."

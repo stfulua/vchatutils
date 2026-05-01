@@ -1,10 +1,10 @@
-package pl.vprolabs.vchatutils;
+package xyz.vprolabs.chatcontrol;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class vChatUtils extends JavaPlugin {
+public class ChatControl extends JavaPlugin {
 
-    private static vChatUtils instance;
+    private static ChatControl instance;
     private ChatManager chatManager;
     private LuckPermsManager luckPermsManager;
     private MessageManager messageManager;
@@ -25,20 +25,17 @@ public class vChatUtils extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(chatManager, this);
 
-        getLogger().info("[vChatUtils] Plugin enabled! Version 1.0.2 by vProLabs");
-        getLogger().info("[vChatUtils] Language: " + configManager.getCurrentLang().toUpperCase());
-
-        if (configManager.isLuckPermsIntegration() && luckPermsManager.isHooked()) {
-            getLogger().info("[vChatUtils] LuckPerms integration enabled!");
-        }
+        getLogger().info("[ChatControl] Plugin enabled! Version " + getDescription().getVersion() + " by vProLabs");
+        getLogger().info("[ChatControl] Language: " + configManager.getCurrentLang().toUpperCase());
     }
 
     @Override
     public void onDisable() {
-        getLogger().info("[vChatUtils] Plugin disabled.");
+        instance = null;
+        getLogger().info("[ChatControl] Plugin disabled.");
     }
 
-    public static vChatUtils getInstance() { return instance; }
+    public static ChatControl getInstance() { return instance; }
     public ChatManager getChatManager() { return chatManager; }
     public LuckPermsManager getLuckPermsManager() { return luckPermsManager; }
     public MessageManager getMessageManager() { return messageManager; }

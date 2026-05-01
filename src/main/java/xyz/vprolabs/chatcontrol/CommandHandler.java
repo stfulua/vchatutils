@@ -1,17 +1,24 @@
-package pl.vprolabs.vchatutils;
+package xyz.vprolabs.chatcontrol;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
-public class CommandHandler implements CommandExecutor {
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
-    private final vChatUtils plugin;
+public class CommandHandler implements CommandExecutor, TabCompleter {
 
-    public CommandHandler(vChatUtils plugin) {
+    private final ChatControl plugin;
+
+    public CommandHandler(ChatControl plugin) {
         this.plugin = plugin;
         plugin.getCommand("chat").setExecutor(this);
+        plugin.getCommand("chat").setTabCompleter(this);
     }
 
     @Override
@@ -71,17 +78,34 @@ public class CommandHandler implements CommandExecutor {
         }
     }
 
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+        if (args.length == 1) {
+            List<String> suggestions = new ArrayList<>();
+            if (plugin.getConfigManager().isEnglishAliases()) {
+                suggestions.addAll(Arrays.asList("clear", "on", "off", "status", "reload"));
+            }
+            if (plugin.getConfigManager().isPolishAliases()) {
+                suggestions.addAll(Arrays.asList("wyczysc", "wlacz", "wylacz", "przeladuj"));
+            }
+            return suggestions.stream()
+                    .filter(s -> s.toLowerCase().startsWith(args[0].toLowerCase()))
+                    .collect(Collectors.toList());
+        }
+        return new ArrayList<>();
+    }
+
     private void reload(CommandSender sender) {
         try {
             plugin.getConfigManager().reload();
             plugin.getMessageManager().load();
-            plugin.getLuckPermsManager();
+            plugin.getLuckPermsManager().setup();
 
             sender.sendMessage(plugin.getMessageManager().get("other.reload-success"));
-            plugin.getLogger().info("[vChatUtils] Config reloaded by " + sender.getName());
+            plugin.getLogger().info("[ChatControl] Config reloaded by " + sender.getName());
         } catch (Exception e) {
             sender.sendMessage(plugin.getMessageManager().get("other.reload-fail"));
-            plugin.getLogger().severe("[vChatUtils] Failed to reload: " + e.getMessage());
+            plugin.getLogger().severe("[ChatControl] Failed to reload: " + e.getMessage());
         }
     }
 }

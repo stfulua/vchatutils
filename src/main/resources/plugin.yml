@@ -1,6 +1,6 @@
-name: vChatUtils
-version: 1.0.2
-main: pl.vprolabs.vchatutils.vChatUtils
+name: ChatControl
+version: ${version}
+main: xyz.vprolabs.chatcontrol.ChatControl
 api-version: "1.21"
 author: vProLabs
 description: Advanced chat management plugin with multi-language support and LuckPerms integration
@@ -11,13 +11,13 @@ commands:
   chat:
     description: Manage chat settings
     usage: /chat <clear|on|off|status|reload>
-    permission: vchatutils.admin
+    permission: chatcontrol.admin
     aliases: [czat, vchat]
 
 permissions:
-  vchatutils.admin:
+  chatcontrol.admin:
     description: Access to all chat management commands
     default: op
-  vchatutils.bypass:
+  chatcontrol.bypass:
     description: Bypass disabled chat
     default: op

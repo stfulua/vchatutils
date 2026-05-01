@@ -1,10 +1,12 @@
-package pl.vprolabs.vchatutils;
+package xyz.vprolabs.chatcontrol;
 
 import org.bukkit.configuration.file.FileConfiguration;
 
+import java.util.List;
+
 public class ConfigManager {
 
-    private final vChatUtils plugin;
+    private final ChatControl plugin;
     private boolean chatEnabled;
     private boolean hideJoinMessages;
     private boolean hideLeaveMessages;
@@ -14,8 +16,10 @@ public class ConfigManager {
     private boolean luckPermsIntegration;
     private String prefix;
     private String currentLang;
+    private int chatSlowmode;
+    private List<String> chatFilter;
 
-    public ConfigManager(vChatUtils plugin) {
+    public ConfigManager(ChatControl plugin) {
         this.plugin = plugin;
         load();
     }
@@ -29,8 +33,10 @@ public class ConfigManager {
         polishAliases = config.getBoolean("polish-aliases", true);
         englishAliases = config.getBoolean("english-aliases", true);
         luckPermsIntegration = config.getBoolean("luckperms-integration", false);
-        prefix = config.getString("prefix", "&8[&cvProLabs&8] ");
+        prefix = config.getString("prefix", "<dark_gray>[<red>vProLabs<dark_gray>] ");
         currentLang = config.getString("language", "en");
+        chatSlowmode = config.getInt("chat-slowmode", 0);
+        chatFilter = config.getStringList("chat-filter");
     }
 
     public void reload() {
@@ -53,4 +59,6 @@ public class ConfigManager {
     public boolean isLuckPermsIntegration() { return luckPermsIntegration; }
     public String getPrefix() { return prefix; }
     public String getCurrentLang() { return currentLang; }
+    public int getChatSlowmode() { return chatSlowmode; }
+    public List<String> getChatFilter() { return chatFilter; }
 }

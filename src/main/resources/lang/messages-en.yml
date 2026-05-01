@@ -1,36 +1,34 @@
-# English messages for vChatUtils
+# ChatControl Language File (English)
+# Use MiniMessage format: https://docs.advntr.dev/minimessage/format.html
 
 commands:
-  usage: "%prefix% &cUsage: /chat <clear|on|off|status|reload>"
-  unknown: "%prefix% &cUnknown command. Use /chat for help."
-
+  usage: "<prefix><red>Usage: /chat <clear|on|off|status|reload>"
+  unknown: "<prefix><red>Unknown subcommand! Use /chat for help."
   clear:
-    success: "%prefix% &aChat cleared by &e%player%&a!"
-    console: "[vChatUtils] Chat cleared by %player%"
-
+    success: "<prefix><green>Chat has been cleared by <yellow><player><green>."
+    console: "<prefix><green>Chat has been cleared by <yellow>Console<green>."
   toggle:
-    enabled: "%prefix% &aChat enabled by &e%player%&a!"
-    disabled: "%prefix% &cChat disabled by &e%player%&c!"
-    console-enabled: "[vChatUtils] Chat enabled by %player%"
-    console-disabled: "[vChatUtils] Chat disabled by %player%"
-
+    enabled: "<prefix><green>Chat has been enabled by <yellow><player><green>."
+    disabled: "<prefix><red>Chat has been disabled by <yellow><player><red>."
   status:
-    header: "&8========== &cvChatUtils &8=========="
-    chat: "&7Chat: %status%"
-    join-messages: "&7Join messages: %status%"
-    leave-messages: "&7Leave messages: %status%"
-    advancements: "&7Advancements: %status%"
-    luckperms: "&7LuckPerms: %status%"
-    bypass-groups: "&7Bypass groups: &e%groups%"
-    footer: "&8=============================="
-    enabled: "&aENABLED"
-    disabled: "&cDISABLED"
-    visible: "&aVISIBLE"
-    hidden: "&cHIDDEN"
+    header: "<gray>--- <color:#ff5555>ChatControl Status</color> ---"
+    chat: "<gray>Chat: <status>"
+    join-messages: "<gray>Join Messages: <status>"
+    leave-messages: "<gray>Leave Messages: <status>"
+    advancements: "<gray>Advancements: <status>"
+    luckperms: "<gray>LuckPerms Hook: <status>"
+    bypass-groups: "<gray>Bypass Groups: <yellow><groups>"
+    enabled: "<green>Enabled"
+    disabled: "<red>Disabled"
+    hidden: "<red>Hidden"
+    visible: "<green>Visible"
+    footer: "<gray>-----------------------"
 
 chat:
-  disabled: "%prefix% &cChat is currently disabled!"
+  disabled: "<prefix><red>Chat is currently disabled!"
+  cooldown: "<prefix><red>Please wait <yellow><seconds>s<red> before sending another message."
+  filtered: "<prefix><red>Your message contains forbidden words!"
 
 other:
-  reload-success: "%prefix% &aConfig reloaded successfully!"
-  reload-fail: "%prefix% &cFailed to reload config!"
+  reload-success: "<prefix><green>Configuration and messages reloaded successfully!"
+  reload-fail: "<prefix><red>Failed to reload configuration! Check console for details."
