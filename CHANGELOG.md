@@ -28,3 +28,4 @@
 - **Chat Formatting**: Configurable chat format with `{prefix}`, `{suffix}`, `{username}`, `{message}` placeholders
 - **PlaceholderAPI**: Full PlaceholderAPI integration for chat format placeholders
 - **Velocity/Bungeecord**: Listed as future support targets
+- **Version Support**: Confirmed compatibility with Paper 1.21.x through 26.1.2

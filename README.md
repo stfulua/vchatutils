@@ -8,7 +8,7 @@
 [![Java](https://img.shields.io/badge/Java-21-orange)](https://www.oracle.com/java/)
 [![Platform](https://img.shields.io/badge/Platform-Paper%20%2F%20Spigot%20%2F%20Purpur-red)](https://papermc.io)
 
-<p>Advanced chat management and control plugin for Paper, Spigot & Purpur 1.21.x</p>
+<p>Advanced chat management and control plugin for Paper 1.21.x - 26.1.x</p>
 <p>Chat toggle, message filtering, slowmode, multi-language support, and LuckPerms integration</p>
 <p><em>Formerly known as <strong>vChatUtils</strong></em></p>
 
@@ -20,6 +20,7 @@
 - [Folia scheduler support]
 - [Velocity support]
 - [Bungeecord support]
+- [Java 25+ compile target for 26.1.x native builds]
 > These will be made in the future of this plugin, if you wanna support us to add these features faster then join our discord!
 
 ---
