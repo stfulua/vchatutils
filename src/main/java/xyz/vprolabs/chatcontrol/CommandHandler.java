@@ -64,6 +64,11 @@ public class CommandHandler implements CommandExecutor, TabCompleter {
                 return true;
             }
 
+            if (!sender.hasPermission("chatcontrol.admin")) {
+                plugin.getMessageManager().send(sender, "commands.no-permission");
+                return true;
+            }
+
             switch (sub) {
                 case "clear": case "wyczysc":
                     if (args.length > 1) {

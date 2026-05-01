@@ -4,6 +4,7 @@
 commands:
   usage: "<prefix><red>Uzycie: /chatcontrol <clear|on|off|status|reload>"
   unknown: "<prefix><red>Nieznana komenda! Uzyj /chatcontrol aby uzyskac pomoc."
+  no-permission: "<prefix><red>Nie masz uprawnien do uzycia tej komendy."
   about:
     header: "<gray>--- <color:#ff5555>ChatControl</color> ---"
     version: "<gray>Wersja: <color:#ff5555><version>"
