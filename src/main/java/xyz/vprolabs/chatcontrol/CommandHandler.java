@@ -26,12 +26,12 @@ public class CommandHandler implements CommandExecutor, TabCompleter {
         if (!command.getName().equalsIgnoreCase("chatcontrol")) return false;
 
         if (!plugin.getConfigManager().isShortAlias() && label.equalsIgnoreCase("cc")) {
-            sender.sendMessage(plugin.getMessageManager().get("commands.short-alias-disabled"));
+            plugin.getMessageManager().send(sender, "commands.short-alias-disabled");
             return true;
         }
 
         if (args.length == 0) {
-            sender.sendMessage(plugin.getMessageManager().get("commands.usage"));
+            plugin.getMessageManager().send(sender, "commands.usage");
             return true;
         }
 
@@ -53,7 +53,7 @@ public class CommandHandler implements CommandExecutor, TabCompleter {
         }
 
         if (!valid) {
-            sender.sendMessage(plugin.getMessageManager().get("commands.unknown"));
+            plugin.getMessageManager().send(sender, "commands.unknown");
             return true;
         }
 
@@ -78,7 +78,7 @@ public class CommandHandler implements CommandExecutor, TabCompleter {
                 reload(sender);
                 return true;
             default:
-                sender.sendMessage(plugin.getMessageManager().get("commands.unknown"));
+                plugin.getMessageManager().send(sender, "commands.unknown");
                 return true;
         }
     }
@@ -106,10 +106,10 @@ public class CommandHandler implements CommandExecutor, TabCompleter {
             plugin.getMessageManager().load();
             plugin.getLuckPermsManager().setup();
 
-            sender.sendMessage(plugin.getMessageManager().get("other.reload-success"));
+            plugin.getMessageManager().send(sender, "other.reload-success");
             plugin.getLogger().info("[ChatControl] Config reloaded by " + sender.getName());
         } catch (Exception e) {
-            sender.sendMessage(plugin.getMessageManager().get("other.reload-fail"));
+            plugin.getMessageManager().send(sender, "other.reload-fail");
             plugin.getLogger().severe("[ChatControl] Failed to reload: " + e.getMessage());
         }
     }

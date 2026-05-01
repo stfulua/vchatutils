@@ -6,9 +6,9 @@
 [![Downloads](https://img.shields.io/modrinth/dt/chat_control?label=Downloads&color=24b47e)](https://modrinth.com/plugin/chat_control)
 [![License](https://img.shields.io/badge/License-vProLabs%20General%20License-blue)](https://www.vprolabs.xyz/projects/license/raw)
 [![Java](https://img.shields.io/badge/Java-21-orange)](https://www.oracle.com/java/)
-[![Platform](https://img.shields.io/badge/Platform-Paper%20%2F%20Folia%20%2F%20Spigot-red)](https://papermc.io)
+[![Platform](https://img.shields.io/badge/Platform-Paper%20%2F%20Spigot%20%2F%20Purpur-red)](https://papermc.io)
 
-<p>Advanced chat management and control plugin for Paper 1.21.x</p>
+<p>Advanced chat management and control plugin for Paper, Spigot & Purpur 1.21.x</p>
 <p>Chat toggle, message filtering, slowmode, multi-language support, and LuckPerms integration</p>
 <p><em>Formerly known as <strong>vChatUtils</strong></em></p>
 
@@ -18,7 +18,6 @@
 
 ### TO-DO (in the future)
 - [Folia scheduler support]
-- [Spigot compatibility testing]
 > These will be made in the future of this plugin, if you wanna support us to add these features faster then join our discord!
 
 ---

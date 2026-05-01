@@ -22,3 +22,4 @@
 - **Command**: Main command changed from `/chat` to `/chatcontrol`
 - **Alias**: Added `/cc` alias (toggleable via `short-alias` in config)
 - **Removed**: Old `/czat` and `/vchat` aliases
+- **Platform**: Added guaranteed Spigot, Paper, and Purpur support (switched to Spigot API)

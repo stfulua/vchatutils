@@ -3,6 +3,8 @@ package xyz.vprolabs.chatcontrol;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
+import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -14,6 +16,7 @@ public class MessageManager {
 
     private final ChatControl plugin;
     private final MiniMessage miniMessage = MiniMessage.miniMessage();
+    private final LegacyComponentSerializer legacySerializer = LegacyComponentSerializer.legacySection();
     private FileConfiguration messages;
     private Map<String, FileConfiguration> messageFiles = new HashMap<>();
 
@@ -71,9 +74,6 @@ public class MessageManager {
             }
         }
 
-        // Handle custom placeholders by converting them to MiniMessage placeholders if they exist
-        // This is a bit tricky with raw string replacement, so we'll do it manually for now
-        // A better way would be using TagResolvers, but let's stick to the plan for simplicity
         Component component = miniMessage.deserialize(msg, Placeholder.parsed("prefix", plugin.getConfigManager().getPrefix()));
         
         for (int i = 0; i < placeholders.length; i += 2) {
@@ -85,5 +85,13 @@ public class MessageManager {
         }
         
         return component;
+    }
+
+    public String getLegacy(String path, String... placeholders) {
+        return legacySerializer.serialize(get(path, placeholders));
+    }
+
+    public void send(CommandSender sender, String path, String... placeholders) {
+        sender.sendMessage(getLegacy(path, placeholders));
     }
 }
