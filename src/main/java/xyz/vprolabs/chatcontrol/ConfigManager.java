@@ -27,31 +27,43 @@ public class ConfigManager {
     }
 
     public void load() {
-        FileConfiguration config = plugin.getConfig();
-        chatEnabled = config.getBoolean("chat-enabled", true);
-        hideJoinMessages = config.getBoolean("hide-join-messages", false);
-        hideLeaveMessages = config.getBoolean("hide-leave-messages", false);
-        hideAdvancements = config.getBoolean("hide-advancements", false);
-        polishAliases = config.getBoolean("polish-aliases", true);
-        englishAliases = config.getBoolean("english-aliases", true);
-        shortAlias = config.getBoolean("short-alias", true);
-        luckPermsIntegration = config.getBoolean("luckperms-integration", false);
-        prefix = config.getString("prefix", "<dark_gray>[<red>vProLabs<dark_gray>] ");
-        currentLang = config.getString("language", "en");
-        chatSlowmode = config.getInt("chat-slowmode", 0);
-        chatFilter = config.getStringList("chat-filter");
-        chatFormat = config.getString("chat-format", "{prefix}{suffix}<white>{username}</white> <dark_gray>\u00bb</dark_gray> <white>{message}</white>");
+        try {
+            FileConfiguration config = plugin.getConfig();
+            chatEnabled = config.getBoolean("chat-enabled", true);
+            hideJoinMessages = config.getBoolean("hide-join-messages", false);
+            hideLeaveMessages = config.getBoolean("hide-leave-messages", false);
+            hideAdvancements = config.getBoolean("hide-advancements", false);
+            polishAliases = config.getBoolean("polish-aliases", true);
+            englishAliases = config.getBoolean("english-aliases", true);
+            shortAlias = config.getBoolean("short-alias", true);
+            luckPermsIntegration = config.getBoolean("luckperms-integration", false);
+            prefix = config.getString("prefix", "<dark_gray>[<red>vProLabs<dark_gray>] ");
+            currentLang = config.getString("language", "en");
+            chatSlowmode = config.getInt("chat-slowmode", 0);
+            chatFilter = config.getStringList("chat-filter");
+            chatFormat = config.getString("chat-format", "{prefix}{suffix}<white>{username}</white> <dark_gray>\u00bb</dark_gray> <white>{message}</white>");
+        } catch (Throwable t) {
+            BugReport.log(t, "ConfigManager.load");
+        }
     }
 
     public void reload() {
-        plugin.reloadConfig();
-        load();
+        try {
+            plugin.reloadConfig();
+            load();
+        } catch (Throwable t) {
+            BugReport.log(t, "ConfigManager.reload");
+        }
     }
 
     public void saveChatEnabled(boolean enabled) {
-        chatEnabled = enabled;
-        plugin.getConfig().set("chat-enabled", enabled);
-        plugin.saveConfig();
+        try {
+            chatEnabled = enabled;
+            plugin.getConfig().set("chat-enabled", enabled);
+            plugin.saveConfig();
+        } catch (Throwable t) {
+            BugReport.log(t, "saveChatEnabled", "enabled=" + enabled);
+        }
     }
 
     public boolean isChatEnabled() { return chatEnabled; }

@@ -23,79 +23,89 @@ public class CommandHandler implements CommandExecutor, TabCompleter {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!command.getName().equalsIgnoreCase("chatcontrol")) return false;
+        try {
+            if (!command.getName().equalsIgnoreCase("chatcontrol")) return false;
 
-        if (!plugin.getConfigManager().isShortAlias() && label.equalsIgnoreCase("cc")) {
-            plugin.getMessageManager().send(sender, "commands.short-alias-disabled");
-            return true;
-        }
-
-        if (args.length == 0) {
-            plugin.getMessageManager().send(sender, "commands.usage");
-            return true;
-        }
-
-        String sub = args[0].toLowerCase();
-        boolean valid = false;
-
-        if (plugin.getConfigManager().isEnglishAliases()) {
-            switch (sub) {
-                case "clear": case "on": case "off": case "status": case "info": case "reload":
-                    valid = true; break;
+            if (!plugin.getConfigManager().isShortAlias() && label.equalsIgnoreCase("cc")) {
+                plugin.getMessageManager().send(sender, "commands.short-alias-disabled");
+                return true;
             }
-        }
 
-        if (plugin.getConfigManager().isPolishAliases() && !valid) {
-            switch (sub) {
-                case "wyczysc": case "wlacz": case "wylacz": case "przeladuj":
-                    valid = true; break;
+            if (args.length == 0) {
+                plugin.getMessageManager().send(sender, "commands.usage");
+                return true;
             }
-        }
 
-        if (!valid) {
-            plugin.getMessageManager().send(sender, "commands.unknown");
-            return true;
-        }
+            String sub = args[0].toLowerCase();
+            boolean valid = false;
 
-        switch (sub) {
-            case "clear": case "wyczysc":
-                if (sender instanceof Player) {
-                    plugin.getChatManager().clearChat((Player) sender);
-                } else {
-                    plugin.getChatManager().clearChatForConsole();
+            if (plugin.getConfigManager().isEnglishAliases()) {
+                switch (sub) {
+                    case "clear": case "on": case "off": case "status": case "info": case "reload":
+                        valid = true; break;
                 }
-                return true;
-            case "on": case "wlacz":
-                plugin.getChatManager().toggleChat(sender, true);
-                return true;
-            case "off": case "wylacz":
-                plugin.getChatManager().toggleChat(sender, false);
-                return true;
-            case "status": case "info":
-                plugin.getChatManager().showStatus(sender);
-                return true;
-            case "reload": case "przeladuj":
-                reload(sender);
-                return true;
-            default:
+            }
+
+            if (plugin.getConfigManager().isPolishAliases() && !valid) {
+                switch (sub) {
+                    case "wyczysc": case "wlacz": case "wylacz": case "przeladuj":
+                        valid = true; break;
+                }
+            }
+
+            if (!valid) {
                 plugin.getMessageManager().send(sender, "commands.unknown");
                 return true;
+            }
+
+            switch (sub) {
+                case "clear": case "wyczysc":
+                    if (sender instanceof Player) {
+                        plugin.getChatManager().clearChat((Player) sender);
+                    } else {
+                        plugin.getChatManager().clearChatForConsole();
+                    }
+                    return true;
+                case "on": case "wlacz":
+                    plugin.getChatManager().toggleChat(sender, true);
+                    return true;
+                case "off": case "wylacz":
+                    plugin.getChatManager().toggleChat(sender, false);
+                    return true;
+                case "status": case "info":
+                    plugin.getChatManager().showStatus(sender);
+                    return true;
+                case "reload": case "przeladuj":
+                    reload(sender);
+                    return true;
+                default:
+                    plugin.getMessageManager().send(sender, "commands.unknown");
+                    return true;
+            }
+        } catch (Throwable t) {
+            BugReport.log(t, "onCommand", "sender=" + sender.getName() + " args=" + String.join(" ", args));
+            sender.sendMessage("§c[ChatControl] §7An internal error occurred. Check bugreport.txt.");
+            return true;
         }
     }
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
-        if (args.length == 1) {
-            List<String> suggestions = new ArrayList<>();
-            if (plugin.getConfigManager().isEnglishAliases()) {
-                suggestions.addAll(Arrays.asList("clear", "on", "off", "status", "reload"));
+        try {
+            if (args.length == 1) {
+                List<String> suggestions = new ArrayList<>();
+                if (plugin.getConfigManager().isEnglishAliases()) {
+                    suggestions.addAll(Arrays.asList("clear", "on", "off", "status", "reload"));
+                }
+                if (plugin.getConfigManager().isPolishAliases()) {
+                    suggestions.addAll(Arrays.asList("wyczysc", "wlacz", "wylacz", "przeladuj"));
+                }
+                return suggestions.stream()
+                        .filter(s -> s.toLowerCase().startsWith(args[0].toLowerCase()))
+                        .collect(Collectors.toList());
             }
-            if (plugin.getConfigManager().isPolishAliases()) {
-                suggestions.addAll(Arrays.asList("wyczysc", "wlacz", "wylacz", "przeladuj"));
-            }
-            return suggestions.stream()
-                    .filter(s -> s.toLowerCase().startsWith(args[0].toLowerCase()))
-                    .collect(Collectors.toList());
+        } catch (Throwable t) {
+            BugReport.log(t, "onTabComplete");
         }
         return new ArrayList<>();
     }
@@ -108,9 +118,9 @@ public class CommandHandler implements CommandExecutor, TabCompleter {
 
             plugin.getMessageManager().send(sender, "other.reload-success");
             plugin.getLogger().info("[ChatControl] Config reloaded by " + sender.getName());
-        } catch (Exception e) {
+        } catch (Throwable t) {
+            BugReport.log(t, "reload", "sender=" + sender.getName());
             plugin.getMessageManager().send(sender, "other.reload-fail");
-            plugin.getLogger().severe("[ChatControl] Failed to reload: " + e.getMessage());
         }
     }
 }

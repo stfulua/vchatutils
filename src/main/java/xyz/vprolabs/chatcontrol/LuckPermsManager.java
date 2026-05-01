@@ -22,23 +22,27 @@ public class LuckPermsManager {
     }
 
     public void setup() {
-        if (!plugin.getConfigManager().isLuckPermsIntegration()) {
-            hooked = false;
-            return;
-        }
+        try {
+            if (!plugin.getConfigManager().isLuckPermsIntegration()) {
+                hooked = false;
+                return;
+            }
 
-        if (plugin.getServer().getPluginManager().getPlugin("LuckPerms") != null) {
-            try {
-                luckPerms = LuckPermsProvider.get();
-                hooked = true;
-                plugin.getLogger().info("[ChatControl] LuckPerms hooked successfully!");
-            } catch (Exception e) {
-                plugin.getLogger().warning("[ChatControl] Failed to hook LuckPerms: " + e.getMessage());
+            if (plugin.getServer().getPluginManager().getPlugin("LuckPerms") != null) {
+                try {
+                    luckPerms = LuckPermsProvider.get();
+                    hooked = true;
+                    plugin.getLogger().info("[ChatControl] LuckPerms hooked successfully!");
+                } catch (Exception e) {
+                    plugin.getLogger().warning("[ChatControl] Failed to hook LuckPerms: " + e.getMessage());
+                    hooked = false;
+                }
+            } else {
+                plugin.getLogger().warning("[ChatControl] LuckPerms integration enabled but LuckPerms not found!");
                 hooked = false;
             }
-        } else {
-            plugin.getLogger().warning("[ChatControl] LuckPerms integration enabled but LuckPerms not found!");
-            hooked = false;
+        } catch (Throwable t) {
+            BugReport.log(t, "LuckPermsManager.setup");
         }
     }
 

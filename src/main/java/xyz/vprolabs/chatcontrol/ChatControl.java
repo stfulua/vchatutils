@@ -13,20 +13,26 @@ public class ChatControl extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        instance = this;
+        try {
+            instance = this;
 
-        saveDefaultConfig();
+            saveDefaultConfig();
 
-        configManager = new ConfigManager(this);
-        messageManager = new MessageManager(this);
-        luckPermsManager = new LuckPermsManager(this);
-        chatManager = new ChatManager(this);
-        commandHandler = new CommandHandler(this);
+            configManager = new ConfigManager(this);
+            messageManager = new MessageManager(this);
+            luckPermsManager = new LuckPermsManager(this);
+            chatManager = new ChatManager(this);
+            commandHandler = new CommandHandler(this);
 
-        getServer().getPluginManager().registerEvents(chatManager, this);
+            getServer().getPluginManager().registerEvents(chatManager, this);
 
-        getLogger().info("[ChatControl] Plugin enabled! Version " + getDescription().getVersion() + " by vProLabs");
-        getLogger().info("[ChatControl] Language: " + configManager.getCurrentLang().toUpperCase());
+            getLogger().info("[ChatControl] Plugin enabled! Version " + getDescription().getVersion() + " by vProLabs");
+            getLogger().info("[ChatControl] Language: " + configManager.getCurrentLang().toUpperCase());
+        } catch (Throwable t) {
+            BugReport.log(t, "Plugin enable");
+            getLogger().severe("[ChatControl] Failed to enable plugin!");
+            getServer().getPluginManager().disablePlugin(this);
+        }
     }
 
     @Override
