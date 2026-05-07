@@ -28,12 +28,25 @@ gradle/*
 hs_err_pid*
 replay_pid*
 
-# Agent / skill artifacts
 .agents/
 skills-lock.json
-
-# OpenCode / AI config
+.claude/
 AGENTS.md
 
 # IDE / desktop artifacts
 .directory
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Environment files
+.env
+.env.local
+.env.*.local
